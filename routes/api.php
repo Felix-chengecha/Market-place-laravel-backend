@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -27,7 +28,14 @@ Route::post('login', [UserController::class, 'login']);
 Route::post('register', [UserController::class, 'register']);
 Route::post('logout', [UserController::class, 'logout']);
 
-Route::post('payment',[ProductsController::class, 'payment']);
+
+Route::get('mpesa/password', [PaymentController::class, 'lipanampesapassword']);
+Route::post('mpesa/accesstoken', [PaymentController::class, 'newAccessToken']);
+Route::post('payment',[PaymentController::class, 'payment']);
+
+Route::post('save/cart',[PaymentController::class, 'savecart']);
+Route::post('save/Transaction',[PaymentController::class, 'saveTransaction']);
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
