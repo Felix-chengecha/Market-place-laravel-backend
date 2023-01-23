@@ -30,7 +30,6 @@ Route::post('logout', [UserController::class, 'logout']);
 Route::post('payment',[ProductsController::class, 'payment']);
 
 
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
